@@ -3,7 +3,7 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
-import plotly.figure_factory as ff
+#import plotly.figure_factory as ff
 
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
@@ -44,3 +44,46 @@ filtered_data = data[data[DATE_COLUMN].dt.day == day_to_filter]
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
 
+st.subheader('Sentiment Analysis')
+
+txt = st.text_area('Text to analyze', '''
+     It was the best of times, it was the worst of times, it was
+     the age of wisdom, it was the age of foolishness, it was
+     the epoch of belief, it was the epoch of incredulity, it
+     was the season of Light, it was the season of Darkness, it
+     was the spring of hope, it was the winter of despair, (...)
+     ''')
+
+st.write('Sentiment:', run_sentiment_analysis(txt))
+
+st.subheader('graph')
+
+st.graphviz_chart('''
+    digraph {
+        run -> intr
+        intr -> runbl
+        runbl -> run
+        run -> kernel
+        kernel -> zombie
+        kernel -> sleep
+        kernel -> runmem
+        sleep -> swap
+        swap -> runswap
+        runswap -> new
+        runswap -> runmem
+        new -> runmem
+        sleep -> runmem
+    }
+''')
+
+# Add histogram data
+x1 = np.random.randn(200) - 2
+x2 = np.random.randn(200)
+x3 = np.random.randn(200) + 2
+
+# Group data together
+hist_data = [x1, x2, x3]
+
+group_labels = ['Group 1', 'Group 2', 'Group 3']
+
+# Create distplot with custom bin_size
