@@ -3,7 +3,7 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
-#import plotly.figure_factory as ff
+import plotly.figure_factory as ff
 
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
