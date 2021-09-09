@@ -6,7 +6,7 @@ from datetime import date
 import numpy as np
 import pandas as pd
 #import plotly.figure_factory as ff
------------------------------------------------------------------------------------------------------------------------------------
+######################################################################################################################################
 DATE_COLUMN = 'daily'
 DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/stagging.csv')
 datastreams_id = [6]
@@ -14,7 +14,7 @@ datastreams_id = [6]
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
     columns=('col %d' % i for i in range(20)))
--------------------------------------------------------------------------------------------------------------------------------------
+######################################################################################################################################
 @st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
@@ -22,8 +22,8 @@ def load_data(nrows):
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     data.rename(lowercase, axis='columns', inplace=True)
     return data
---------------------------------------------------------------------------------------------------------------------------------------
-def fetch(datastreams_id):
+
+def fetch_ds(datastreams_id):
     for i in datastreams_id:
         url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
         payload = json.dumps({
@@ -37,49 +37,45 @@ def fetch(datastreams_id):
 
     response = requests.request("POST", url, headers=headers, data=payload).json()
     return(response)
---------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------
+######################################################################################################################################
+
+st.title('Adverity usual tasks')
 
 st.dataframe(dataframe.style.highlight_max(axis=0))
 
-st.title('Testing export')
-
+st.write('última actualización de kwin')
 data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
+if st.button('Raw data'):
+    st.subheader('Raw data')
+    st.write(data)
+
 options = st.multiselect(
-    'What are your favorite colors',
+    'What are your platforms do you want to fetch',
     ['Facebook', 'Google', 'Sizmek'],
     ['Facebook'])
 
 st.write('You selected:', options)
 
+st.subheader('Number of records  by day')
 
-if st.checkbox('Fetch Facebook data'):
-    response = fetch_ds(6)
-    st.write(response)
-    
-if st.button('Raw data'):
-    st.subheader('Raw data')
-    st.write(data)
-    
-#if st.checkbox('Fetch Google data',  key=Google):
-#    st.write('Google Fetched')
+st.date_input('Date input')
 
-st.subheader('Number of  by day')
+day_to_filter = st.slider('day', 1, 31, (5, 30))
+st.write('Values:', day_to_filter)
+days_range = list(range(day_to_filter[0],day_to_filter[1]))
 
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(0,31))[0]
 st.bar_chart(hist_values)
-# Some number in the range 0-23
-day_to_filter = st.slider('day', 1, 31, (5, 30))
-#data[DATE_COLUMN] = data[DATE_COLUMN].dt.day
-st.write('Values:', day_to_filter)
-days_range = list(range(day_to_filter[0],day_to_filter[1]))
-st.write(days_range)
 
+if st.checkbox('Fetch Facebook data'):
+    response = fetch_ds(datastreams_id)
+    st.write(response)
+      
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
-filtered_data = data.query('daily == @days_range')
+filtered_data = data['daily'].dt.day == day_to_filter[0]]
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
@@ -120,8 +116,6 @@ data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
 st.bar_chart(np.random.randn(50, 3))
-
-st.date_input('Date input')
 
 st.line_chart(data_sub1["platform_cost"])
 #st.bar_chart(data_sub1)
