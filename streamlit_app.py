@@ -75,7 +75,7 @@ if st.checkbox(f'Fetch {options} data'):
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
 filtered_data = data[data['initiative' == color]]
 
-hist_values = np.histogram(filtered_data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
+hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
 st.bar_chart(hist_values)
 
 st.subheader('Campaigns at days %d' % day_to_filter)
