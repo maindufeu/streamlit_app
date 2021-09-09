@@ -107,6 +107,8 @@ chart_data = data.groupby(['initiative', 'daily'], as_index=False).mean()
 data_sub1 = chart_data[['initiative','daily','platform_cost']]
 
 data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
+
+data_sub1['daily'] = data[data[DATE_COLUMN].dt.day]
 st.write(data_sub1[["daily", "platform_cost"]])
 
 
