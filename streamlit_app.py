@@ -70,9 +70,9 @@ days_range = list(range(day_to_filter[0],day_to_filter[1]))
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(0,31))[0]
 st.bar_chart(hist_values)
 
-if st.checkbox('Fetch Facebook data'):
+if st.checkbox(f'Fetch {options} data'):
     #response = fetch_ds(datastreams_id)
-    st.write(datastreams_id)
+    st.write(test)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
 filtered_data = data[data['daily'].dt.day == day_to_filter[0]]
