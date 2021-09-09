@@ -68,14 +68,14 @@ st.subheader('Number of  by day')
 
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(0,31))[0]
 st.bar_chart(hist_values)
-
+data[DATE_COLUMN] = data[data[DATE_COLUMN].dt.day
 # Some number in the range 0-23
 day_to_filter = st.slider('day', 1, 31, (5, 30))
 st.write('Values:', day_to_filter)
 days_range = list(range(day_to_filter[0],day_to_filter[1]))
 st.write(days_range)
 
-filtered_data = data[data[DATE_COLUMN].dt.day.isin(days_range)]
+filtered_data = data[data.daily.isin(days_range)]
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
