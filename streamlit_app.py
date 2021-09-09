@@ -50,7 +50,7 @@ if st.checkbox('Fetch Facebook data'):
     response = requests.request("POST", url, headers=headers, data=payload).json()
     st.write(response)
     
-if st.button('Hit me')
+if st.button('Raw data'):
     st.subheader('Raw data')
     st.write(data)
 
