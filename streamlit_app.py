@@ -1,9 +1,15 @@
 import streamlit as st
+import requests
+import json
 import subprocess
+from datetime import date
 # To make things easier later, we're also importing numpy and pandas for
 # working with sample data.
 import numpy as np
 import pandas as pd
+
+datastreams_id = [6]
+
 #import plotly.figure_factory as ff
 
 dataframe = pd.DataFrame(
@@ -30,6 +36,19 @@ data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
 if st.checkbox('Fetch raw data'):
+    for i in datastreams_id:
+    url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
+    payload = json.dumps({
+      "start": "2020-08-01T00:00:00Z",
+      "end": "2021-08-06T00:00:00Z"
+    })
+    headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token c49e653ffa8a0c80768bbf1af0887905a56fff9b'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload).json()
+    st.write(response)
     st.subheader('Raw data')
     st.write(data)
 
