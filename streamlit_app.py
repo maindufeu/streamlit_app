@@ -106,9 +106,9 @@ group_labels = ['Group 1', 'Group 2', 'Group 3']
 chart_data = data.groupby(['initiative', 'platform','daily'], as_index=False).mean()
 data_sub1 = chart_data[['initiative','platform','daily','platform_cost']]
 st.write(data_sub1)
-data_sub1 = data_sub1.groupby('platform', as_index=False).mean()
-#data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
-#data_sub1['daily'] = data_sub1['daily'].dt.date
+#data_sub1 = data_sub1.groupby('platform', as_index=False).mean()
+data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
+data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
 st.bar_chart(np.random.randn(50, 3))
