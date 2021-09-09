@@ -11,15 +11,16 @@ dataframe = pd.DataFrame(
 
 st.dataframe(dataframe.style.highlight_max(axis=0))
 
-st.title('Uber pickups in NYC')
+st.title('Testing export')
 
-DATE_COLUMN = 'date/time'
+DATE_COLUMN = 'daily'
 DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/adverity-export.csv')
 
 @st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     lowercase = lambda x: str(x).lower()
+    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
@@ -31,4 +32,11 @@ if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(data)
 
-st.subheader('Number of pickups by hour')
+st.subheader('Number of  by day')
+
+hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
+st.bar_chart(hist_values)
+
+# Some number in the range 0-23
+hour_to_filter = st.slider('hour', 0, 23, 17)
+#filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
