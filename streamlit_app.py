@@ -112,6 +112,8 @@ data_sub1 = data_sub1.transpose()
 #data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
+st.bar_chart(np.random.randn(50, 3))
+
 st.date_input('Date input')
 
 #st.line_chart(data_sub1[["platform", "platform_cost"]])
