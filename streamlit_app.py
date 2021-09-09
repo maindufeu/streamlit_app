@@ -47,6 +47,5 @@ st.map(filtered_data)
 DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/staging.csv')
 data = load_data(10000)
 
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
-    st.write(data)
+st.subheader('Raw data')
+st.write(data)
