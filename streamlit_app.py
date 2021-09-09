@@ -58,6 +58,19 @@ txt = st.text_area('Text to analyze', '''
 
 st.subheader('graph')
 
+import graphviz as graphviz
+
+st.graphviz_chart('''
+digraph {
+    run -> intr
+    intr -> runbl
+    runbl -> run
+    run -> kernel
+    kernel -> zombie
+    kernel -> sleep
+}
+''')
+
 # Add histogram data
 x1 = np.random.randn(200) - 2
 x2 = np.random.randn(200)
