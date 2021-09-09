@@ -109,7 +109,7 @@ data_sub1 = chart_data[['initiative','daily','platform_cost']]
 data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
 
 data_sub1['daily'] = data_sub1['daily'].dt.date
-st.write(data_sub1[["daily", "platform_cost"]])
+st.write(data_sub1)
 
 
 st.line_chart(data_sub1[["daily", "platform_cost"]])
