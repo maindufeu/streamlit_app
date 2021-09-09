@@ -45,7 +45,7 @@ st.dataframe(dataframe.style.highlight_max(axis=0))
 
 st.write('última actualización de kwin')
 data_load_state = st.text('Loading data...')
-data = load_data(10000)
+data = load_data(1000)
 data_load_state.text("Done! (using st.cache)")
 
 if st.button('Raw data'):
@@ -67,7 +67,7 @@ day_to_filter = st.slider('day', 1, 31, (5, 30))
 st.write('Values:', day_to_filter)
 days_range = list(range(day_to_filter[0],day_to_filter[1]))
 
-hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(0,31))[0]
+hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=day_to_filter)[0]
 st.bar_chart(hist_values)
 
 if st.checkbox(f'Fetch {options} data'):
