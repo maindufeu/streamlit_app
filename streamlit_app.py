@@ -54,7 +54,7 @@ txt = st.text_area('Text to analyze', '''
      was the spring of hope, it was the winter of despair, (...)
      ''')
 
-st.write('Sentiment:', run_sentiment_analysis(txt))
+#st.write('Sentiment:', run_sentiment_analysis(txt))
 
 st.subheader('graph')
 
