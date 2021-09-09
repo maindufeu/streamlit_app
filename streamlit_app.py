@@ -104,11 +104,11 @@ group_labels = ['Group 1', 'Group 2', 'Group 3']
 
 # Create distplot with custom bin_size
 data_sub1 = data[['platform','daily','platform_cost']]
-chart_data = data_sub1.groupby(['initiative', 'daily'], as_index=False).mean()
+#chart_data = data_sub1.groupby(['initiative', 'daily'], as_index=False).mean()
 
-st.write(chart_data)
+st.write(data_sub1)
 
-st.line_chart(chart_data)
+st.line_chart(data_sub1)
 #st.area_chart(chart_data)
 #st.write(subprocess.call('date', shell=True))
 
