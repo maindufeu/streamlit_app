@@ -58,7 +58,7 @@ txt = st.text_area('Text to analyze', '''
 
 st.subheader('graph')
 
-import graphviz as graphviz
+#import graphviz as graphviz
 
 # Add histogram data
 x1 = np.random.randn(200) - 2
