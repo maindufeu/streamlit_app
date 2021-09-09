@@ -103,14 +103,15 @@ hist_data = [x1, x2, x3]
 group_labels = ['Group 1', 'Group 2', 'Group 3']
 
 # Create distplot with custom bin_size
-chart_data = data.groupby(['initiative','daily'], as_index=False).mean()
+chart_data = data.groupby(['initiative', 'platform','daily'], as_index=False).mean()
 data_sub1 = chart_data[['initiative','daily','platform_cost']]
-data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
+data_sub1 = data_sub1.groupby('platform', as_index=False).mean
+#data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
 data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
 
-st.line_chart(data_sub1[["daily", "platform_cost"]])
+st.line_chart(data_sub1[["platform", "platform_cost"]])
 #st.bar_chart(data_sub1)
 #st.area_chart(chart_data)
 #st.write(subprocess.call('date', shell=True))
