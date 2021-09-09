@@ -115,7 +115,7 @@ st.bar_chart(np.random.randn(50, 3))
 
 st.date_input('Date input')
 
-#st.line_chart(data_sub1[["platform", "platform_cost"]])
+st.line_chart(data_sub1["platform_cost"])
 #st.bar_chart(data_sub1)
 #st.area_chart(chart_data)
 #st.write(subprocess.call('date', shell=True))
