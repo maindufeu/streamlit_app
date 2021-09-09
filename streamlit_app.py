@@ -79,5 +79,5 @@ st.write(chart_data)
 
 #st.line_chart(chart_data)
 
-st.write(subprocess.call('pwd', shell=True))
+st.write(subprocess.call('date', shell=True))
 
