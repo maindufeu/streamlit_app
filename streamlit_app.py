@@ -72,7 +72,7 @@ st.bar_chart(hist_values)
 # Some number in the range 0-23
 day_to_filter = st.slider('day', 1, 31, (5, 30))
 st.write('Values:', day_to_filter)
-days_range = range(day_to_filter)
+days_range = list(range(day_to_filter))
 st.write(days_range)
 
 filtered_data = data[data[DATE_COLUMN].dt.day == day_to_filter]
