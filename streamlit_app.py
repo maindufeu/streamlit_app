@@ -112,7 +112,8 @@ data_sub1 = chart_data[['initiative','platform_cost']]
 st.write(data_sub1)
 
 
-st.line_chart(data_sub1[["initiative", "platform_cost"]])
+#st.line_chart(data_sub1[["initiative", "platform_cost"]])
+st.bar_chart(data_sub1)
 #st.area_chart(chart_data)
 #st.write(subprocess.call('date', shell=True))
 
