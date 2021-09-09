@@ -41,5 +41,5 @@ st.bar_chart(hist_values)
 day_to_filter = st.slider('day', 0, 31, 17)
 filtered_data = data[data[DATE_COLUMN].dt.day == day_to_filter]
 
-st.subheader('Campaigns at %d:00' % day_to_filter)
+st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
