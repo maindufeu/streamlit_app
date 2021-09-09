@@ -58,6 +58,8 @@ st.write('Sentiment:', run_sentiment_analysis(txt))
 
 st.subheader('graph')
 
+import graphviz as graphviz
+
 st.graphviz_chart('''
     digraph {
         run -> intr
