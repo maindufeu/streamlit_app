@@ -107,7 +107,7 @@ chart_data = data.groupby(['initiative', 'daily'], as_index=False).mean()
 data_sub1 = chart_data[['initiative','daily','platform_cost']]
 
 data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
-st.write(data_sub1)
+st.write(data_sub1[1:2])
 
 
 st.line_chart(data_sub1)
