@@ -75,7 +75,7 @@ st.write('Values:', day_to_filter)
 days_range = list(range(day_to_filter[0],day_to_filter[1]))
 st.write(days_range)
 
-filtered_data = data[data[DATE_COLUMN].dt.day in days_range]
+filtered_data = data[data[DATE_COLUMN].dt.day %in% days_range]
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
