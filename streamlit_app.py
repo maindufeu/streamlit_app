@@ -66,7 +66,7 @@ st.date_input('Date input')
 
 color = st.select_slider(
     'Select a color of the rainbow',
-    options=['A lo grande', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'])
+    options=['A lo grande', 'Chocodilema', 'Komplete', 'Despierta Mucho Mas', 'Freestamp', 'Red City', 'Promo Xbox'])
 st.write('Values:', color)
 
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
