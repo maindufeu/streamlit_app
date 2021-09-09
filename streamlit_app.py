@@ -105,9 +105,9 @@ group_labels = ['Group 1', 'Group 2', 'Group 3']
 # Create distplot with custom bin_size
 chart_data = data.groupby([['initiative','daily']], as_index=False).mean()
 data_sub1 = chart_data[['initiative','daily','platform_cost']]
-
+st.write(data_sub1)
 data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
-
+st.write(data_sub1)
 data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
