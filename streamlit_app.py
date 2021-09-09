@@ -14,7 +14,7 @@ st.dataframe(dataframe.style.highlight_max(axis=0))
 st.title('Uber pickups in NYC')
 
 DATE_COLUMN = 'date/time'
-DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/staging.csv')
+DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/adverity-export.csv')
 
 @st.cache
 def load_data(nrows):
