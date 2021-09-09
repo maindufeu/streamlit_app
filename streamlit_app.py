@@ -54,7 +54,8 @@ if st.button('Raw data'):
     st.subheader('Raw data')
     st.write(data)
     
- if st.checkbox('Fetch Google data',  key=Google):
+if st.checkbox('Fetch Google data',  key=Google):
+    st.write('Google Fetched')
 
 st.subheader('Number of  by day')
 
