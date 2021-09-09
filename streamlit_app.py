@@ -76,10 +76,10 @@ if st.checkbox(f'Fetch {options} data'):
     response = fetch_ds(datastreams_id)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
-filtered_data = data[data['initiative' == color]]
+#filtered_data = data[data['initiative' == color]]
 
 #st.subheader('Campaigns at days %d' % day_to_filter)
-st.write(filtered_data)
+#st.write(filtered_data)
 
 st.subheader('Sentiment Analysis')
 
