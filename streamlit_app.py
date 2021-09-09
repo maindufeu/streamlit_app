@@ -14,13 +14,13 @@ st.dataframe(dataframe.style.highlight_max(axis=0))
 st.title('Testing export')
 
 DATE_COLUMN = 'daily'
-DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/adverity-export.csv')
+DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/stagging.csv')
 
 @st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     lowercase = lambda x: str(x).lower()
-    #data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
