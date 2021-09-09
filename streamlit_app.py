@@ -70,7 +70,7 @@ hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(0,31))[0]
 st.bar_chart(hist_values)
 # Some number in the range 0-23
 day_to_filter = st.slider('day', 1, 31, (5, 30))
-data[DATE_COLUMN] = data[data[DATE_COLUMN].dt.day
+data[DATE_COLUMN] = data[DATE_COLUMN].dt.day
 st.write('Values:', day_to_filter)
 days_range = list(range(day_to_filter[0],day_to_filter[1]))
 st.write(days_range)
