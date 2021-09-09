@@ -98,7 +98,7 @@ chart_data = data.groupby(['initiative', 'daily'], as_index=False).mean()
 
 st.write(chart_data)
 
-st.line_chart(chart_data)
-
-st.write(subprocess.call('date', shell=True))
+#st.line_chart(chart_data)
+st.area_chart(data)
+#st.write(subprocess.call('date', shell=True))
 
