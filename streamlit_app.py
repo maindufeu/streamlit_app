@@ -69,14 +69,14 @@ color = st.select_slider(
     options=['A lo grande', 'Chocodilema', 'Komplete', 'Despierta Mucho Mas', 'Freestamp', 'Red City', 'Promo Xbox'])
 st.write('Values:', color)
 
-hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
-st.bar_chart(hist_values)
-
 if st.checkbox(f'Fetch {options} data'):
     response = fetch_ds(datastreams_id)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
 filtered_data = data[data['initiative' == color]]
+
+hist_values = np.histogram(filtered_data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
+st.bar_chart(hist_values)
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
