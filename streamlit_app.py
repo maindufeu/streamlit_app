@@ -64,20 +64,19 @@ st.subheader('Number of records  by day')
 
 st.date_input('Date input')
 
-day_to_filter = st.slider('day', 1, 31, (5, 30))
-st.write('Values:', day_to_filter)
-days_range = list(range(day_to_filter[0],day_to_filter[1]))
+color = st.select_slider(
+    'Select a color of the rainbow',
+    options=['A lo grande', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'])
+st.write('Values:', color)
 
-hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=day_to_filter)[0]
+hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
 st.bar_chart(hist_values)
-
-st.write(day_to_filter[0])
 
 if st.checkbox(f'Fetch {options} data'):
     response = fetch_ds(datastreams_id)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
-filtered_data = data[data[DATE_COLUMN].dt.day == day_to_filter[0]]
+filtered_data = data[data['initiative' == color]
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
