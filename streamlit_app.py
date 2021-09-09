@@ -20,7 +20,7 @@ DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/adverity-export.csv')
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     lowercase = lambda x: str(x).lower()
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+    #data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
@@ -34,8 +34,8 @@ if st.checkbox('Fetch raw data'):
 
 st.subheader('Number of  by day')
 
-hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=24, range=(0,24))[0]
-st.bar_chart(hist_values)
+#hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=24, range=(0,24))[0]
+#st.bar_chart(hist_values)
 
 # Some number in the range 0-23
 hour_to_filter = st.slider('hour', 0, 23, 17)
