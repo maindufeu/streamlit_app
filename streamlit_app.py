@@ -75,7 +75,7 @@ if st.checkbox('Fetch Facebook data'):
     st.write(response)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
-filtered_data = data['daily'].dt.day == day_to_filter[0]]
+filtered_data = data[data['daily'].dt.day == day_to_filter[0]]
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
