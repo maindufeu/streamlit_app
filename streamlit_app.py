@@ -3,7 +3,7 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
-
+import plotly.figure_factory as ff
 
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
@@ -44,6 +44,8 @@ filtered_data = data[data[DATE_COLUMN].dt.day == day_to_filter]
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
 
+st.subheader('Sentiment Analysis')
+
 txt = st.text_area('Text to analyze', '''
      It was the best of times, it was the worst of times, it was
      the age of wisdom, it was the age of foolishness, it was
@@ -53,25 +55,7 @@ txt = st.text_area('Text to analyze', '''
      ''')
 st.write('Sentiment:', run_sentiment_analysis(txt))
 
-st.graphviz_chart('''
-    digraph {
-        run -> intr
-        intr -> runbl
-        runbl -> run
-        run -> kernel
-        kernel -> zombie
-        kernel -> sleep
-        kernel -> runmem
-        sleep -> swap
-        swap -> runswap
-        runswap -> new
-        runswap -> runmem
-        new -> runmem
-        sleep -> runmem
-    }
-''')
-
-import plotly.figure_factory as ff
+st.subheader('graph')
 
 # Add histogram data
 x1 = np.random.randn(200) - 2
