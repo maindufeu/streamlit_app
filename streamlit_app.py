@@ -94,7 +94,7 @@ group_labels = ['Group 1', 'Group 2', 'Group 3']
 
 # Create distplot with custom bin_size
 
-chart_data = data.groupby(['initiative', 'daily']).mean()
+chart_data = data.groupby(['initiative', 'daily'], as_index=False).mean()
 
 st.write(chart_data)
 
