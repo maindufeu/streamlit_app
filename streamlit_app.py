@@ -71,3 +71,7 @@ hist_data = [x1, x2, x3]
 group_labels = ['Group 1', 'Group 2', 'Group 3']
 
 # Create distplot with custom bin_size
+
+chart_data = data.groupby(['datasource']).mean()
+
+st.line_chart(chart_data)
