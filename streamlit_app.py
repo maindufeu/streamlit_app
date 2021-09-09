@@ -35,7 +35,7 @@ data_load_state = st.text('Loading data...')
 data = load_data(10000)
 data_load_state.text("Done! (using st.cache)")
 
-if st.checkbox('Fetch Facebook data'):
+if st.checkbox('Fetch Facebook data',  key=Facebook):
     for i in datastreams_id:
         url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
         payload = json.dumps({
@@ -53,6 +53,8 @@ if st.checkbox('Fetch Facebook data'):
 if st.button('Raw data'):
     st.subheader('Raw data')
     st.write(data)
+    
+ if st.checkbox('Fetch Google data',  key=Google):
 
 st.subheader('Number of  by day')
 
