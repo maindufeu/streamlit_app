@@ -3,7 +3,7 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
-import plotly.figure_factory as ff
+#import plotly.figure_factory as ff
 
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
@@ -43,14 +43,4 @@ filtered_data = data[data[DATE_COLUMN].dt.day == day_to_filter]
 
 st.subheader('Campaigns at days %d' % day_to_filter)
 st.write(filtered_data)
-
-st.subheader('Sentiment Analysis')
-
-txt = st.text_area('Text to analyze', '''
-     It was the best of times, it was the worst of times, it was
-     the age of wisdom, it was the age of foolishness, it was
-     the epoch of belief, it was the epoch of incredulity, it
-     was the season of Light, it was the season of Darkness, it
-     was the spring of hope, it was the winter of despair, (...)
-     ''')
 
