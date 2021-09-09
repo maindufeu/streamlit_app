@@ -111,9 +111,11 @@ data_sub1 = data_sub1.groupby('platform', as_index=False).mean()
 #data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
+st.sidebar.<widget>
+a = st.sidebar.radio('R:',[1,2])
 
 #st.line_chart(data_sub1[["platform", "platform_cost"]])
-st.bar_chart(data_sub1)
+#st.bar_chart(data_sub1)
 #st.area_chart(chart_data)
 #st.write(subprocess.call('date', shell=True))
 
