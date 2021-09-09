@@ -3,26 +3,18 @@ import requests
 import json
 import subprocess
 from datetime import date
-# To make things easier later, we're also importing numpy and pandas for
-# working with sample data.
 import numpy as np
 import pandas as pd
-
-datastreams_id = [6]
-
 #import plotly.figure_factory as ff
+-----------------------------------------------------------------------------------------------------------------------------------
+DATE_COLUMN = 'daily'
+DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/stagging.csv')
+datastreams_id = [6]
 
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
     columns=('col %d' % i for i in range(20)))
-
-st.dataframe(dataframe.style.highlight_max(axis=0))
-
-st.title('Testing export')
-
-DATE_COLUMN = 'daily'
-DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/stagging.csv')
-
+-------------------------------------------------------------------------------------------------------------------------------------
 @st.cache
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
@@ -30,19 +22,8 @@ def load_data(nrows):
     data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     data.rename(lowercase, axis='columns', inplace=True)
     return data
-
-data_load_state = st.text('Loading data...')
-data = load_data(10000)
-data_load_state.text("Done! (using st.cache)")
-
-options = st.multiselect(
-    'What are your favorite colors',
-    ['Facebook', 'Google', 'Sizmek'],
-    ['Facebook'])
-
-st.write('You selected:', options)
-
-if st.checkbox('Fetch Facebook data'):
+--------------------------------------------------------------------------------------------------------------------------------------
+def fetch(datastreams_id):
     for i in datastreams_id:
         url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
         payload = json.dumps({
@@ -55,6 +36,28 @@ if st.checkbox('Fetch Facebook data'):
         }
 
     response = requests.request("POST", url, headers=headers, data=payload).json()
+    return(response)
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+
+st.dataframe(dataframe.style.highlight_max(axis=0))
+
+st.title('Testing export')
+
+data_load_state = st.text('Loading data...')
+data = load_data(10000)
+data_load_state.text("Done! (using st.cache)")
+
+options = st.multiselect(
+    'What are your favorite colors',
+    ['Facebook', 'Google', 'Sizmek'],
+    ['Facebook'])
+
+st.write('You selected:', options)
+
+
+if st.checkbox('Fetch Facebook data'):
+    response = fetch_ds(6)
     st.write(response)
     
 if st.button('Raw data'):
