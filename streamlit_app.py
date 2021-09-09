@@ -1,4 +1,5 @@
 import streamlit as st
+import subprocess
 # To make things easier later, we're also importing numpy and pandas for
 # working with sample data.
 import numpy as np
@@ -76,4 +77,7 @@ chart_data = data.groupby(['initiative', 'daily']).mean()
 
 st.write(chart_data)
 
-st.line_chart(chart_data)
+#st.line_chart(chart_data)
+
+st.write(subprocess.call('ls', shell=True))
+
