@@ -109,7 +109,7 @@ st.write(data_sub1)
 data_sub1 = data_sub1.groupby('platform', as_index=False).mean()
 #data_sub1 = data_sub1[data_sub1['initiative'] == 'A lo grande']
 #data_sub1['daily'] = data_sub1['daily'].dt.date
-st.write(data_sub1.T)
+st.write(data_sub1.transpose())
 
 st.date_input('Date input')
 
