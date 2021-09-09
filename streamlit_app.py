@@ -112,7 +112,7 @@ data_sub1['daily'] = data_sub1['daily'].dt.date
 st.write(data_sub1)
 
 
-st.line_chart(data_sub1[["daily", "platform_cost"]])
+#st.line_chart(data_sub1[["daily", "platform_cost"]])
 #st.bar_chart(data_sub1)
 #st.area_chart(chart_data)
 #st.write(subprocess.call('date', shell=True))
