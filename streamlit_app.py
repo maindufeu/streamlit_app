@@ -1,5 +1,3 @@
-!pip install streamlit-d3-demo
-
 import random
 from streamlit_d3_demo import d3_line
 
