@@ -48,7 +48,7 @@ st.write('última actualización de kwin')
 data_load_state = st.text('Loading data...')
 data = load_data(1000)
 data_load_state.text("Done! (using st.cache)")
-
+######################################################################################################################################
 if st.button('Raw data'):
     st.subheader('Raw data')
     st.write(data)
@@ -63,12 +63,12 @@ st.write('You selected:', options)
 st.subheader('Number of records  by day')
 
 st.date_input('Date input')
-
+######################################################################################################################################
 color = st.select_slider(
     'Select a color of the rainbow',
     options=['A lo grande', 'Chocodilema', 'Komplete', 'Despierta Mucho Mas', 'Freestamp', 'Red City', 'Promo Xbox'])
 st.write('Values:', color)
-
+######################################################################################################################################
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
 st.bar_chart(hist_values)
 
@@ -82,7 +82,7 @@ if st.checkbox(f'Fetch {options} data'):
 #st.write(filtered_data)
 
 st.subheader('Sentiment Analysis')
-
+######################################################################################################################################
 txt = st.text_area('Text to analyze', '''
      It was the best of times, it was the worst of times, it was
      the age of wisdom, it was the age of foolishness, it was
@@ -96,7 +96,7 @@ txt = st.text_area('Text to analyze', '''
 st.subheader('graph')
 
 group_labels = ['Group 1', 'Group 2', 'Group 3']
-
+######################################################################################################################################
 # Create distplot with custom bin_size
 chart_data = data.groupby(['initiative', 'platform','daily'], as_index=False).mean()
 data_sub1 = chart_data[['initiative','platform','daily','platform_cost']]
@@ -107,7 +107,7 @@ st.write(data_sub1)
 #st.write(data_sub1)
 
 st.bar_chart(np.random.randn(50, 3))
-
+##########################################################################################################################################
 st.line_chart(data_sub1["platform_cost"])
 #st.bar_chart(data_sub1)
 #st.area_chart(chart_data)
