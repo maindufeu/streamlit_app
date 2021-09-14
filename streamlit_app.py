@@ -27,13 +27,6 @@ def load_data(nrows):
 def fetch_ds(datastreams_id):
     for i in datastreams_id:
         url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
-        #payload = json.dumps({
-        #"start": "2021-09-12T00:00:00Z",
-        #"end": "2021-09-13T00:00:00Z"
-        #})
-        #p = {}
-        #p['start'] = sd
-        #p['end'] = ed
         payload = json.dumps(p)
         headers = {
         'Content-Type': 'application/json',
@@ -84,7 +77,11 @@ p = {}
 p['start'] = sd
 p['end'] = ed
 payload = json.dumps(p)
-st.write(str(p))
+st.write(str(payload))
+
+if st.checkbox(f'Fetch {options} data from {sd} to {ed}'):
+    response = fetch_ds(datastreams_id)
+    st.write(response)
 ######################################################################################################################################
 color = st.select_slider(
     'Select a color of the rainbow',
@@ -93,9 +90,6 @@ st.write('Values:', color)
 ######################################################################################################################################
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
 st.bar_chart(hist_values)
-
-if st.checkbox(f'Fetch {options} data from {sd} to {ed}'):
-    response = fetch_ds(datastreams_id)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
 #filtered_data = data[data['initiative' == color]]
