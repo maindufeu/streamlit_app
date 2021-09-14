@@ -51,7 +51,7 @@ if st.button('Raw data'):
     st.write(data)
 
 options = st.multiselect(
-    'What are your platforms do you want to fetch',
+    'Which platforms do you want to fetch',
     ['Facebook', 'Google', 'Sizmek SAS - Colombia','Sizmek SAS - Mexico','Sizmek SAS - Miami','Sizmek SAS - Puerto Rico'],
     ['Facebook','Google', 'Sizmek SAS - Colombia','Sizmek SAS - Mexico','Sizmek SAS - Miami','Sizmek SAS - Puerto Rico'])
 
@@ -84,7 +84,7 @@ if st.checkbox(f'Fetch {options} data from {sd} to {ed}'):
     st.write(response)
 ######################################################################################################################################
 color = st.select_slider(
-    'Select a color of the rainbow',
+    'Select an initiative',
     options=['A lo grande', 'Chocodilema', 'Komplete', 'Despierta Mucho Mas', 'Freestamp', 'Red City', 'Promo Xbox'])
 st.write('Values:', color)
 ######################################################################################################################################
