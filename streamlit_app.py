@@ -55,12 +55,12 @@ if st.button('Raw data'):
 
 options = st.multiselect(
     'What are your platforms do you want to fetch',
-    ['Facebook', 'Google', 'Sizmek'],
-    ['Facebook'])
+    ['Facebook', 'Google', 'Sizmek SAS - Colombia','Sizmek SAS - Mexico','Sizmek SAS - Miami','Sizmek SAS - Puerto Rico'],
+    ['Facebook','Google', 'Sizmek SAS - Colombia','Sizmek SAS - Mexico','Sizmek SAS - Miami','Sizmek SAS - Puerto Rico'])
 
 st.write('You selected:', options)
 
-id_mapping = {'Facebook':6, 'Google':2, 'Sizmek':[89,98,97,99]}
+id_mapping = {'Facebook':6, 'Google':2, 'Sizmek SAS - Colombia':89, 'Sizmek SAS - Mexico':98,'Sizmek SAS - Miami':97,'Sizmek SAS - Puerto Rico':99}
 
 ds_ids = [id_mapping[x] for x in options]
 st.write(ds_ids)
