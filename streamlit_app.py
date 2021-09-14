@@ -66,7 +66,16 @@ fetch_sd = st.date_input('Start Date input')
 
 fetch_ed = st.date_input('End Date input')
 
-st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, fetch_ed.strftime('%Y-%m-%dT%H:%M:%SZ'))
+sd = fetch_sd.strftime('%Y-%m-%dT%H:%M:%SZ')
+ed = fetch_ed.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+p = {}
+p['start'] = sd
+p['end'] = ed
+payload = json.dumps(p)
+
+st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, sd,ed, payload)
+
 ######################################################################################################################################
 color = st.select_slider(
     'Select a color of the rainbow',
