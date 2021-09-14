@@ -74,7 +74,7 @@ fetch_ed = st.date_input('End Date input')
 sd = fetch_sd.strftime('%Y-%m-%dT%H:%M:%SZ')
 ed = fetch_ed.strftime('%Y-%m-%dT%H:%M:%SZ')
 
-st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, sd,ed, payload)
+st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, sd,ed)
 
 ######################################################################################################################################
 color = st.select_slider(
