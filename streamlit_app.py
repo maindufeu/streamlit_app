@@ -74,7 +74,7 @@ fetch_ed = st.date_input('End Date input')
 sd = fetch_sd.strftime('%Y-%m-%dT%H:%M:%SZ')
 ed = fetch_ed.strftime('%Y-%m-%dT%H:%M:%SZ')
 
-st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, sd,ed)
+st.write("start Date:", fetch_sd, 'End Date:', fetch_ed)
 
 ######################################################################################################################################
 color = st.select_slider(
@@ -85,7 +85,7 @@ st.write('Values:', color)
 hist_values = np.histogram(data[DATE_COLUMN].dt.day, bins=31, range=(1,31))[0]
 st.bar_chart(hist_values)
 
-if st.checkbox(f'Fetch {options} data'):
+if st.checkbox(f'Fetch {options} data', 'from:', sd,'to:',ed):
     response = fetch_ds(datastreams_id)
       
 #filtered_data = data[(data['daily'].dt.day).isin(days_range)]
