@@ -33,7 +33,7 @@ def fetch_ds(datastreams_id):
         'Authorization': 'Token c49e653ffa8a0c80768bbf1af0887905a56fff9b'
         }
 
-    response = requests.request("POST", url, headers=headers, data=payload).json()
+        response = requests.request("POST", url, headers=headers, data=payload).json()
     return(response)
 ######################################################################################################################################
 
