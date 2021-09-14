@@ -66,7 +66,7 @@ fetch_sd = st.date_input('Start Date input')
 
 fetch_ed = st.date_input('End Date input')
 
-st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, fetch_ed.strftime('We are the %d, %b %Y'), fetch_ds.isoformat(timespec='microseconds')
+st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, fetch_ed.strftime('We are the %d, %b %Y'), fetch_ds.isoformat(timespec='microseconds'))
 ######################################################################################################################################
 color = st.select_slider(
     'Select a color of the rainbow',
