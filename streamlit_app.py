@@ -57,7 +57,7 @@ options = st.multiselect(
 
 st.write('You selected:', options)
 
-id_mapping = {'Facebook':6, 'Google':2, 'Sizmek SAS - Colombia':89, 'Sizmek SAS - Mexico':98,'Sizmek SAS - Miami':97,'Sizmek SAS - Puerto Rico':99}
+id_mapping = {'Facebook':6, 'Google':63, 'Sizmek SAS - Colombia':89, 'Sizmek SAS - Mexico':98,'Sizmek SAS - Miami':97,'Sizmek SAS - Puerto Rico':99}
 
 datastreams_id = [id_mapping[x] for x in options]
 st.write(datastreams_id)
