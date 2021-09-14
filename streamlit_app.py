@@ -84,7 +84,7 @@ p = {}
 p['start'] = sd
 p['end'] = ed
 payload = json.dumps(p)
-st.write(str(payload))
+st.write(str(p))
 ######################################################################################################################################
 color = st.select_slider(
     'Select a color of the rainbow',
