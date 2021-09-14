@@ -66,7 +66,7 @@ fetch_sd = st.date_input('Start Date input')
 
 fetch_ed = st.date_input('End Date input')
 
-st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, str(fetch_ds))
+st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, datetime(fetch_ds))
 ######################################################################################################################################
 color = st.select_slider(
     'Select a color of the rainbow',
