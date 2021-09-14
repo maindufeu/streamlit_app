@@ -10,8 +10,8 @@ import pandas as pd
 ######################################################################################################################################
 DATE_COLUMN = 'daily'
 DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/stagging.csv')
-datastreams_id = [6,63,101,89,98,97,99]
-
+#datastreams_id = [6,63,101,89,98,97,99]
+datastreams_id = []
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
     columns=('col %d' % i for i in range(20)))
@@ -62,9 +62,8 @@ st.write('You selected:', options)
 
 id_mapping = {'Facebook':6, 'Google':2, 'Sizmek SAS - Colombia':89, 'Sizmek SAS - Mexico':98,'Sizmek SAS - Miami':97,'Sizmek SAS - Puerto Rico':99}
 
-ds_ids = [id_mapping[x] for x in options]
-st.write(ds_ids)
-#datastreams_id= 
+datastreams_id = [id_mapping[x] for x in options]
+st.write(datastreams_id)
 
 st.subheader('Number of records  by day')
 
