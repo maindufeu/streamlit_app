@@ -10,7 +10,7 @@ import pandas as pd
 ######################################################################################################################################
 DATE_COLUMN = 'daily'
 DATA_URL = ('https://testingmidktbo.s3.amazonaws.com/stagging.csv')
-datastreams_id = [6]
+datastreams_id = [6,63,101,89,98,97,99]
 
 dataframe = pd.DataFrame(
     np.random.randn(10, 20),
@@ -24,13 +24,13 @@ def load_data(nrows):
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
-def fetch_ds(datastreams_id):
+def fetch_ds(datastreams_id,sd,ed):
     for i in datastreams_id:
         url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
-        payload = json.dumps({
-        "start": "2020-08-01T00:00:00Z",
-        "end": "2021-08-06T00:00:00Z"
-        })
+        p = {}
+        p['start'] = sd
+        p['end'] = ed
+        payload = json.dumps(p)
         headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Token c49e653ffa8a0c80768bbf1af0887905a56fff9b'
@@ -60,6 +60,12 @@ options = st.multiselect(
 
 st.write('You selected:', options)
 
+id_mapping = {'Facebook':6, 'Google':2, 'Sizmek':[89,98,97,99]}
+
+ds_ids = [id_mapping[x] for x in options]
+st.write(ds_ids)
+#datastreams_id= 
+
 st.subheader('Number of records  by day')
 
 fetch_sd = st.date_input('Start Date input')
@@ -68,11 +74,6 @@ fetch_ed = st.date_input('End Date input')
 
 sd = fetch_sd.strftime('%Y-%m-%dT%H:%M:%SZ')
 ed = fetch_ed.strftime('%Y-%m-%dT%H:%M:%SZ')
-
-p = {}
-p['start'] = sd
-p['end'] = ed
-payload = json.dumps(p)
 
 st.write("start Date:", fetch_sd, 'End Date:', fetch_ed, sd,ed, payload)
 
