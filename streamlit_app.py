@@ -24,13 +24,17 @@ def load_data(nrows):
     data.rename(lowercase, axis='columns', inplace=True)
     return data
 
-def fetch_ds(datastreams_id,sd,ed):
+def fetch_ds(datastreams_id):
     for i in datastreams_id:
         url = f'https://KTBO.datatap.adverity.com/api/datastreams/{i}/fetch_fixed/'
-        p = {}
-        p['start'] = sd
-        p['end'] = ed
-        payload = json.dumps(p)
+        payload = json.dumps({
+        "start": "2020-09-12T00:00:00Z",
+        "end": "2021-09-13T00:00:00Z"
+        })
+        #p = {}
+        #p['start'] = sd
+        #p['end'] = ed
+        #payload = json.dumps(p)
         headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Token c49e653ffa8a0c80768bbf1af0887905a56fff9b'
